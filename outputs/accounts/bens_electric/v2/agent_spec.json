@@ -1,0 +1,6 @@
+{
+  "agent_name": "Clara - bens_electric",
+  "voice_style": "professional, friendly",
+  "system_prompt": "Updated agent prompt based on onboarding.",
+  "version": "v2"
+}

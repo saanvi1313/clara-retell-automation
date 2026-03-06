@@ -1,0 +1,127 @@
+{
+  "name": "Clara Agent Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      step: \"Run demo pipeline\",\n      command: \"python scripts/demo_pipeline.py\"\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        192,
+        0
+      ],
+      "id": "d234fe21-3bd7-4864-9102-59296f938bc4",
+      "name": "Run Demo Pipeline"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      step: \"Transcribe audio\",\n      command: \"python scripts/transcribe_audio.py\"\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        368,
+        0
+      ],
+      "id": "937ba875-9ff4-4af4-b217-974dfbc42455",
+      "name": "Transcribe Audio"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      step: \"Run onboarding pipeline\",\n      command: \"python scripts/onboarding_pipeline.py\"\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "27546128-0a84-4ad6-92bc-47d52934ffac",
+      "name": "Run Onboarding Pipeline"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      status: \"Pipeline completed successfully\",\n      output_location: \"outputs/accounts/\"\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        736,
+        0
+      ],
+      "id": "c1503d9e-79f3-4c42-875b-772eeb0d4fbf",
+      "name": "Pipeline Complete"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "270e757a-9617-410d-8233-06991e7d2b57",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Run Demo Pipeline": {
+      "main": [
+        [
+          {
+            "node": "Transcribe Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe Audio": {
+      "main": [
+        [
+          {
+            "node": "Run Onboarding Pipeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run Onboarding Pipeline": {
+      "main": [
+        [
+          {
+            "node": "Pipeline Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Run Demo Pipeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "68c6d09b-de4a-44e0-b231-7830be4edf2a",
+  "meta": {
+    "instanceId": "e90a18511495d9ebfff614f10c81cbb612e2ee72a2a098089000e06a98461efb"
+  },
+  "id": "pLI5IO00ZZ8NWdDe",
+  "tags": []
+}

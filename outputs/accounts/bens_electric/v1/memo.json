@@ -1,0 +1,22 @@
+{
+  "account_id": "bens_electric",
+  "company_name": "Ben\u2019s Electric Solutions",
+  "business_hours": null,
+  "office_address": null,
+  "services_supported": [
+    "Electrical service calls",
+    "Residential electrical repair"
+  ],
+  "emergency_definition": null,
+  "emergency_routing_rules": null,
+  "non_emergency_routing_rules": null,
+  "call_transfer_rules": null,
+  "integration_constraints": [],
+  "after_hours_flow_summary": "",
+  "office_hours_flow_summary": "",
+  "questions_or_unknowns": [
+    "Exact business hours unknown",
+    "Emergency routing not confirmed"
+  ],
+  "notes": "Generated from demo call"
+}
